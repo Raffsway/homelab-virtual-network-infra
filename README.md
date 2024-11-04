@@ -1,11 +1,11 @@
 
 # Homelab Virtual Network Infra
 
-Este projeto consiste em um laboratório de rede virtual, criado com o objetivo de simular um ambiente de data center que requer baixa latência e inclui uma variedade de serviços de rede. Utilizando o EVE-NG para emulação de rede, configuramos um servidor Ubuntu para hospedar serviços essenciais como DHCP, DNS, Syslog e TFTP. Além disso, foram implementados dispositivos de rede configurados com práticas básicas de segurança.
+Este projeto consiste em um laboratório de rede virtual, criado com o objetivo de simular um ambiente de rede center que inclui uma variedade de serviços de rede. Utilizando o EVE-NG para emulação de rede, configuramos um servidor Ubuntu para hospedar serviços essenciais como DHCP, DNS, Syslog e TFTP. Além disso, foram implementados dispositivos de rede configurados com práticas básicas de segurança.
 
 ## Visão Geral do Projeto
 
-A infraestrutura do laboratório foi configurada para o domínio `homelab.net`, permitindo a experimentação com diferentes serviços e protocolos de rede. Este projeto é ideal para o estudo e testes de configurações em um ambiente controlado.
+A infraestrutura do laboratório foi configurada para o domínio `homelab.net`, permitindo a experimentação com diferentes serviços e protocolos de rede. 
 
 ## Estrutura do Ambiente
 
@@ -21,7 +21,7 @@ A infraestrutura do laboratório foi configurada para o domínio `homelab.net`, 
 ## Serviços Implementados
 
 ### Network Services
-- **DHCP and DHCP Relay**: Serviço DHCP configurado no servidor Ubuntu para distribuir IPs nas sub-redes especificadas. O DHCP Relay é usado para encaminhar as solicitações DHCP para o servidor principal em redes diferentes.
+- **DHCP and DHCP Relay**: Serviço DHCP configurado no servidor Ubuntu para distribuir IPs nas sub-redes especificadas. O DHCP Relay foi usado para encaminhar as solicitações DHCP para o servidor principal em redes diferentes.
 - **NAT/PAT**: Tradução de endereços de rede e de porta para acessar redes externas.
 - **TFTP**: Configurado para transferir arquivos entre dispositivos de rede e o servidor, com o modo verbose ativado para monitoramento de transferências.
 - **IPv4**: Configuração de endereços IPv4 em todas as interfaces dos dispositivos.
