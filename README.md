@@ -55,7 +55,7 @@ Medidas básicas de segurança foram aplicadas para proteger os dispositivos e c
 
 
 ### DNS
-- **Objetivo**: Direcionar todas as consultas para o servidor `SRV` que hospeda o serviço de DNS, para que ele verifique e resolva as consultas DNS internas associadas ao domínio `homelab.net` e consultas externas usando o 8.8.8.8.
+- **Objetivo**: Direcionar todas as consultas para o servidor SRV, que hospeda o serviço de DNS, para que ele verifique e resolva as consultas DNS internas para o endereço `10.0.3.3` associado ao domínio `homelab.net`, e as consultas externas para o endereço `8.8.8.8`, associado ao domínio `dns.google`.
 - **Resultado**: A resolução de nomes foi bem-sucedida para todos os dispositivos registrados.
 <img src="imagens/DNS_SERVER/PC01-LAN1-DNS.png" alt="DNS" width="1000"/>
 <img src="imagens/DNS_SERVER/PC02-LAN2-DNS.png" alt="DNS" width="1000"/>
