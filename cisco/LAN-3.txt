@@ -1,0 +1,58 @@
+enable
+configure terminal
+
+hostname SWLAN3
+!
+enable algorithm-type sha256 secret cisco
+username Rafael algorithm-type sha256 secret user
+username admin algorithm-type sha256 secret admin
+!
+ip domain-name homelab.net
+crypto key generate rsa general-keys modulus 2048
+ip name-server 10.0.3.3
+!
+ntp server a.st1.ntp.br
+clock timezone BRT -3
+service timestamps log datetime msec localtime
+!
+service password-encryption
+!
+ip default-gateway 10.0.3.1
+ip default-network 10.0.3.0
+!
+interface vlan 1
+ ip address 10.0.3.2 255.255.255.248
+ no shutdown
+!
+interface GigabitEthernet0/3
+ description LAN3_TO_RT-DC
+ no negotiation auto
+ duplex full
+ speed 1000
+ media-type rj45
+ exit
+!
+logging 10.0.3.3
+logging trap informational
+!         
+banner motd ^C
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$ ACESSO RESTRITO AO SWITCH LAN3 $$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+^C  
+line con 0
+ password cisco_console
+ login local
+line aux 0
+ password cisco_aux
+line vty 0 4
+ password cisco_telnet_ssh
+ logging synchronous
+ login local
+ transport input telnet ssh         
+ end
+wr

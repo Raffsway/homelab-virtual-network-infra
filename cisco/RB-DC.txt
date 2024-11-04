@@ -1,0 +1,99 @@
+enable
+configure terminal
+
+hostname RT-DC
+!
+enable algorithm-type sha256 secret cisco
+username Rafael algorithm-type sha256 secret user
+username admin algorithm-type sha256 secret admin
+!
+ip domain-name homelab.net
+crypto key generate rsa general-keys modulus 2048
+ip name-server 10.0.3.3
+!
+ntp server a.st1.ntp.br
+clock timezone BRT -3
+service timestamps log datetime msec localtime
+!
+service password-encryption
+!
+interface loopback 1
+ ip address 192.168.100.200/32
+ description MGMT
+ no shutdown
+interface GigabitEthernet0/0
+ description WAN
+ ip address dhcp
+ ip nat outside
+ ip virtual-reassembly in
+ duplex auto
+ speed auto
+ media-type rj45
+ no shutdown
+!         
+interface GigabitEthernet0/2
+ description RT-DC_TO_LAN-2
+ ip address 10.0.2.1 255.255.255.0
+ ip helper-address 10.0.3.3
+ ip nat inside
+ ip virtual-reassembly in
+ duplex full
+ speed 1000
+ media-type rj45
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description RT-DC_TO_LAN1
+ ip address 10.0.1.1 255.255.255.0
+ ip helper-address 10.0.3.3
+ ip nat inside
+ ip virtual-reassembly in
+ duplex full
+ speed 1000
+ media-type rj45
+ no shutdown
+!     
+interface GigabitEthernet0/3
+ description RT-DC_TO_LAN-3-SRV
+ ip address 10.0.3.1 255.255.255.248
+ ip helper-address 10.0.3.3
+ ip nat inside
+ ip virtual-reassembly in
+ duplex full
+ speed 1000
+ media-type rj45
+ no shutdown
+ exit
+!             
+ip nat inside source list NAT interface GigabitEthernet0/0 overload
+ip ssh version 2
+!         
+ip access-list standard NAT
+ permit any
+ exit
+!
+logging 10.0.3.3
+logging trap informational
+!   
+banner motd ^C
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$ ACESSO RESTRITO AO RT-DC $$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+^C  
+
+line con 0
+ password cisco_console
+ login local
+line aux 0
+ password cisco_aux
+line vty 0 4
+ password cisco_telnet_ssh
+ logging synchronous
+ login local
+ transport input telnet ssh         
+ end
+wr
