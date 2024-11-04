@@ -20,7 +20,7 @@ A infraestrutura do laboratório foi configurada para o domínio `homelab.net`, 
 
 ## Serviços Implementados
 
-### Network Services
+### Serviços de Rede
 - **DHCP and DHCP Relay**: Serviço DHCP configurado no servidor Ubuntu para distribuir IPs nas sub-redes especificadas. O DHCP Relay foi usado para encaminhar as solicitações DHCP para o servidor principal em redes diferentes.
 - **NAT/PAT**: Tradução de endereços de rede e de porta para acessar redes externas.
 - **TFTP**: Configurado para transferir arquivos entre dispositivos de rede e o servidor, com o modo verbose ativado para monitoramento de transferências.
@@ -31,7 +31,7 @@ A infraestrutura do laboratório foi configurada para o domínio `homelab.net`, 
 - **CDP/LLDP**: Protocolos de descoberta para identificação de dispositivos vizinhos.
 - **NTP**: Sincronização de tempo entre os dispositivos e o servidor.
 
-### Basic Security
+### Segurança Básica
 
 Medidas básicas de segurança foram aplicadas para proteger os dispositivos e controlar o acesso. Essas medidas incluem:
 
