@@ -1,5 +1,5 @@
 
-# Homelab Virtual Network Infra
+# Infraestrutura
 
 Este projeto consiste em um laboratório de rede virtual, criado com o objetivo de simular um ambiente de rede center que inclui uma variedade de serviços de rede. Utilizando o EVE-NG para emulação de rede, configuramos um servidor Ubuntu para hospedar serviços essenciais como DHCP, DNS, Syslog e TFTP. Além disso, foram implementados dispositivos de rede configurados com práticas básicas de segurança.
 
