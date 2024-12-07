@@ -1,7 +1,7 @@
 
 # Infraestrutura
 
-Este projeto de rede empresaria consiste em implementar  uma variedade de serviços essenciais de rede. Foi configurado um servidor Ubuntu para hospedar serviços essenciais como DHCP, DNS, Syslog e TFTP. Além disso, foram implementados dispositivos de rede configurados com práticas básicas de segurança.
+Este projeto de rede empresarial consiste em implementar  uma variedade de serviços essenciais de rede. Foi configurado um servidor Ubuntu para hospedar serviços essenciais como DHCP, DNS, Syslog e TFTP. Além disso, foram implementados dispositivos de rede configurados com práticas básicas de segurança.
 
 ## Visão Geral do Projeto
 
